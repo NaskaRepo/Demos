@@ -36,8 +36,11 @@ def initVortex(maxX, maxY, per=0.05):
 
 
 if __name__ == "__main__":
-	maxX=128
-	maxY=48
+	ctypes.windll.user32.keybd_event(0x7A)
+	time.sleep(0.1)
+	size = os.get_terminal_size()
+	maxX=size[0] - 3
+	maxY=size[1] - 3
 
 	scale = 0.2
     
@@ -54,7 +57,6 @@ if __name__ == "__main__":
 			global running
 			running = False
 
-	ctypes.windll.user32.keybd_event(0x7A)
 	print('\033[?25l', end="")
 
 	kbt = keyboard.keyboard(inputHandler)

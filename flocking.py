@@ -107,8 +107,11 @@ class Boid:
 
 
 if __name__ == "__main__":
-	maxX=128
-	maxY=48
+	ctypes.windll.user32.keybd_event(0x7A)
+	time.sleep(0.01)
+	size = os.get_terminal_size()
+	maxX=size[0] - 3
+	maxY=size[1] - 3
 
 	flock = [Boid(random.randint(0, maxX - 1), random.randint(0, maxY - 1), maxX, maxY) for _ in range(NUM_BOIDS)]
 
@@ -122,7 +125,6 @@ if __name__ == "__main__":
 			global running
 			running = False
 
-	ctypes.windll.user32.keybd_event(0x7A)
 	print('\033[?25l', end="")
 
 	kbt = keyboard.keyboard(inputHandler)

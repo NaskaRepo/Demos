@@ -23,14 +23,14 @@ def updateDirt(voxelMap, maxX, maxY, loc):
 		return map2d.swap(voxelMap, loc, (loc[0], loc[1] - 1)), [loc, (loc[0], loc[1] - 1)]
 
 	if random.random() > 0.45:
-		if TYPES[voxelMap[loc[0] + 1][loc[1] - 1]]['state'] != 'solid':
+		if loc[0] + 1 < maxX and TYPES[voxelMap[loc[0] + 1][loc[1] - 1]]['state'] != 'solid':
 			return map2d.swap(voxelMap, loc, (loc[0] + 1, loc[1] - 1)), [loc, (loc[0] + 1, loc[1] - 1)]
-		if TYPES[voxelMap[loc[0] - 1][loc[1] - 1]]['state'] != 'solid':
+		if loc[0] - 1 > 1 and TYPES[voxelMap[loc[0] - 1][loc[1] - 1]]['state'] != 'solid':
 			return map2d.swap(voxelMap, loc, (loc[0] - 1, loc[1] - 1)), [loc, (loc[0] - 1, loc[1] - 1)]
 	else:
-		if TYPES[voxelMap[loc[0] - 1][loc[1] - 1]]['state'] != 'solid':
+		if loc[0] - 1 > 1 and TYPES[voxelMap[loc[0] - 1][loc[1] - 1]]['state'] != 'solid':
 			return map2d.swap(voxelMap, loc, (loc[0] - 1, loc[1] - 1)), [loc, (loc[0] - 1, loc[1] - 1)]
-		if TYPES[voxelMap[loc[0] + 1][loc[1] - 1]]['state'] != 'solid':
+		if loc[0] + 1 < maxX and TYPES[voxelMap[loc[0] + 1][loc[1] - 1]]['state'] != 'solid':
 			return map2d.swap(voxelMap, loc, (loc[0] + 1, loc[1] - 1)), [loc, (loc[0] + 1, loc[1] - 1)]
 
 	return voxelMap, [loc]
@@ -38,14 +38,14 @@ def updateDirt(voxelMap, maxX, maxY, loc):
 
 def updateSand(voxelMap, maxX, maxY, loc):
 	if random.random() > 0.45:
-		if loc[0] - 1 >= 0 and loc[1] + 1 < maxY and TYPES[voxelMap[loc[0] + 1][loc[1] + 1]]['state'] == 'solid' and TYPES[voxelMap[loc[0] - 1][loc[1]]]['state'] != 'solid':
+		if loc[0] + 1 < maxX and loc[0] - 1 > 1 and loc[1] + 1 < maxY and TYPES[voxelMap[loc[0] + 1][loc[1] + 1]]['state'] == 'solid' and TYPES[voxelMap[loc[0] - 1][loc[1]]]['state'] != 'solid':
 			return map2d.swap(voxelMap, loc, (loc[0] - 1, loc[1])), [loc, (loc[0] - 1, loc[1])]
-		if loc[0] + 1 < maxX and loc[1] + 1 < maxY and TYPES[voxelMap[loc[0] - 1][loc[1] + 1]]['state'] == 'solid' and TYPES[voxelMap[loc[0] + 1][loc[1]]]['state'] != 'solid':
+		if loc[0] - 1 > 1 and loc[0] + 1 < maxX and loc[1] + 1 < maxY and TYPES[voxelMap[loc[0] - 1][loc[1] + 1]]['state'] == 'solid' and TYPES[voxelMap[loc[0] + 1][loc[1]]]['state'] != 'solid':
 			return map2d.swap(voxelMap, loc, (loc[0] + 1, loc[1])), [loc, (loc[0] + 1, loc[1])]
 	else:
-		if loc[0] + 1 < maxX and loc[1] + 1 < maxY and TYPES[voxelMap[loc[0] - 1][loc[1] + 1]]['state'] == 'solid' and TYPES[voxelMap[loc[0] + 1][loc[1]]]['state'] != 'solid':
+		if loc[0] - 1 > 1 and loc[0] + 1 < maxX and loc[1] + 1 < maxY and TYPES[voxelMap[loc[0] - 1][loc[1] + 1]]['state'] == 'solid' and TYPES[voxelMap[loc[0] + 1][loc[1]]]['state'] != 'solid':
 			return map2d.swap(voxelMap, loc, (loc[0] + 1, loc[1])), [loc, (loc[0] + 1, loc[1])]
-		if loc[0] - 1 >= 0 and loc[1] + 1 < maxY and TYPES[voxelMap[loc[0] + 1][loc[1] + 1]]['state'] == 'solid' and TYPES[voxelMap[loc[0] - 1][loc[1]]]['state'] != 'solid':
+		if loc[0] + 1 < maxX and loc[0] - 1 > 1 and loc[1] + 1 < maxY and TYPES[voxelMap[loc[0] + 1][loc[1] + 1]]['state'] == 'solid' and TYPES[voxelMap[loc[0] - 1][loc[1]]]['state'] != 'solid':
 			return map2d.swap(voxelMap, loc, (loc[0] - 1, loc[1])), [loc, (loc[0] - 1, loc[1])]
 
 	if loc[1] == 0:
@@ -55,14 +55,14 @@ def updateSand(voxelMap, maxX, maxY, loc):
 		return map2d.swap(voxelMap, loc, (loc[0], loc[1] - 1)), [loc, (loc[0], loc[1] - 1)]
 
 	if random.random() > 0.45:
-		if TYPES[voxelMap[loc[0] + 1][loc[1] - 1]]['state'] != 'solid':
+		if loc[0] + 1 < maxX and TYPES[voxelMap[loc[0] + 1][loc[1] - 1]]['state'] != 'solid':
 			return map2d.swap(voxelMap, loc, (loc[0] + 1, loc[1] - 1)), [loc, (loc[0] + 1, loc[1] - 1)]
-		if TYPES[voxelMap[loc[0] - 1][loc[1] - 1]]['state'] != 'solid':
+		if loc[0] - 1 > 1 and TYPES[voxelMap[loc[0] - 1][loc[1] - 1]]['state'] != 'solid':
 			return map2d.swap(voxelMap, loc, (loc[0] - 1, loc[1] - 1)), [loc, (loc[0] - 1, loc[1] - 1)]	
 	else:
-		if TYPES[voxelMap[loc[0] - 1][loc[1] - 1]]['state'] != 'solid':
+		if loc[0] - 1 > 1 and TYPES[voxelMap[loc[0] - 1][loc[1] - 1]]['state'] != 'solid':
 			return map2d.swap(voxelMap, loc, (loc[0] - 1, loc[1] - 1)), [loc, (loc[0] - 1, loc[1] - 1)]
-		if TYPES[voxelMap[loc[0] + 1][loc[1] - 1]]['state'] != 'solid':
+		if loc[0] + 1 < maxX and TYPES[voxelMap[loc[0] + 1][loc[1] - 1]]['state'] != 'solid':
 			return map2d.swap(voxelMap, loc, (loc[0] + 1, loc[1] - 1)), [loc, (loc[0] + 1, loc[1] - 1)]
 			
 	return voxelMap, [loc]
@@ -80,22 +80,22 @@ def updateWater(voxelMap, maxX, maxY, loc):
 		return map2d.swap(voxelMap, loc, (loc[0], loc[1] - 1)), [loc, (loc[0], loc[1] - 1)]
 
 	if random.random() > 0.45:
-		if loc[1] >= 1 and TYPES[voxelMap[loc[0] + 1][loc[1] - 1]]['state'] != 'liquid' and TYPES[voxelMap[loc[0] + 1][loc[1] - 1]]['state'] != 'solid':
+		if loc[1] >= 1 and loc[0] + 1 < maxX and TYPES[voxelMap[loc[0] + 1][loc[1] - 1]]['state'] != 'liquid' and TYPES[voxelMap[loc[0] + 1][loc[1] - 1]]['state'] != 'solid':
 			return map2d.swap(voxelMap, loc, (loc[0] + 1, loc[1] - 1)), [loc, (loc[0] + 1, loc[1] - 1)]
-		if loc[1] >= 1 and TYPES[voxelMap[loc[0] - 1][loc[1] - 1]]['state'] != 'liquid' and TYPES[voxelMap[loc[0] - 1][loc[1] - 1]]['state'] != 'solid':
+		if loc[1] >= 1 and loc[0] - 1 >= 0 and TYPES[voxelMap[loc[0] - 1][loc[1] - 1]]['state'] != 'liquid' and TYPES[voxelMap[loc[0] - 1][loc[1] - 1]]['state'] != 'solid':
 			return map2d.swap(voxelMap, loc, (loc[0] - 1, loc[1] - 1)), [loc, (loc[0] - 1, loc[1] - 1)]
-		if loc[0] + 1 < maxX and TYPES[voxelMap[loc[0] + 1][loc[1]]]['state'] != 'solid' and TYPES[voxelMap[loc[0] - 1][loc[1]]]['state'] == 'liquid':
+		if loc[0] + 1 < maxX and loc[0] - 1 >= 0 and TYPES[voxelMap[loc[0] + 1][loc[1]]]['state'] != 'solid' and TYPES[voxelMap[loc[0] - 1][loc[1]]]['state'] == 'liquid':
 			return map2d.swap(voxelMap, loc, (loc[0] + 1, loc[1])), [loc, (loc[0] + 1, loc[1])]
-		if loc[0] - 1 >= 0 and TYPES[voxelMap[loc[0] - 1][loc[1]]]['state'] != 'solid' and TYPES[voxelMap[loc[0] + 1][loc[1]]]['state'] == 'liquid':
+		if loc[0] - 1 >= 0 and loc[0] + 1 < maxX and TYPES[voxelMap[loc[0] - 1][loc[1]]]['state'] != 'solid' and TYPES[voxelMap[loc[0] + 1][loc[1]]]['state'] == 'liquid':
 			return map2d.swap(voxelMap, loc, (loc[0] - 1, loc[1])), [loc, (loc[0] - 1, loc[1])]
 	else:
-		if loc[1] >= 1 and TYPES[voxelMap[loc[0] - 1][loc[1] - 1]]['state'] != 'liquid'  and TYPES[voxelMap[loc[0] - 1][loc[1] - 1]]['state'] != 'solid':
+		if loc[1] >= 1 and loc[0] - 1 >= 0 and TYPES[voxelMap[loc[0] - 1][loc[1] - 1]]['state'] != 'liquid'  and TYPES[voxelMap[loc[0] - 1][loc[1] - 1]]['state'] != 'solid':
 			return map2d.swap(voxelMap, loc, (loc[0] - 1, loc[1] - 1)), [loc, (loc[0] - 1, loc[1] - 1)]
-		if loc[1] >= 1 and TYPES[voxelMap[loc[0] + 1][loc[1] - 1]]['state'] != 'liquid'  and TYPES[voxelMap[loc[0] + 1][loc[1] - 1]]['state'] != 'solid':
+		if loc[1] >= 1 and loc[0] + 1 < maxX and TYPES[voxelMap[loc[0] + 1][loc[1] - 1]]['state'] != 'liquid'  and TYPES[voxelMap[loc[0] + 1][loc[1] - 1]]['state'] != 'solid':
 			return map2d.swap(voxelMap, loc, (loc[0] + 1, loc[1] - 1)), [loc, (loc[0] + 1, loc[1] - 1)]
-		if loc[0] - 1 >= 0 and TYPES[voxelMap[loc[0] - 1][loc[1]]]['state'] != 'solid' and TYPES[voxelMap[loc[0] + 1][loc[1]]]['state'] == 'liquid':
+		if loc[0] - 1 >= 0 and loc[0] + 1 < maxX and TYPES[voxelMap[loc[0] - 1][loc[1]]]['state'] != 'solid' and TYPES[voxelMap[loc[0] + 1][loc[1]]]['state'] == 'liquid':
 			return map2d.swap(voxelMap, loc, (loc[0] - 1, loc[1])), [loc, (loc[0] - 1, loc[1])]
-		if loc[0] + 1 < maxX and TYPES[voxelMap[loc[0] + 1][loc[1]]]['state'] != 'solid' and TYPES[voxelMap[loc[0] - 1][loc[1]]]['state'] == 'liquid':
+		if loc[0] + 1 < maxX and loc[0] - 1 >= 0 and TYPES[voxelMap[loc[0] + 1][loc[1]]]['state'] != 'solid' and TYPES[voxelMap[loc[0] - 1][loc[1]]]['state'] == 'liquid':
 			return map2d.swap(voxelMap, loc, (loc[0] + 1, loc[1])), [loc, (loc[0] + 1, loc[1])]
 	
 	return voxelMap, [loc]
@@ -126,8 +126,11 @@ if __name__ == "__main__":
 	global maxX
 	global maxY
 
-	maxX=128
-	maxY=48
+	ctypes.windll.user32.keybd_event(0x7A)
+	time.sleep(0.01)
+	size = os.get_terminal_size()
+	maxX=size[0] - 3
+	maxY=size[1] - 3
 
 	initTypes()
 
@@ -161,7 +164,6 @@ if __name__ == "__main__":
 		if char == 'right' and spawn[0] < maxX - 1:
 			spawn = (spawn[0] + 1, spawn[1])
 	
-	ctypes.windll.user32.keybd_event(0x7A)
 	print('\033[?25l', end="")
 
 	kbt = keyboard.keyboard(inputHandler)
