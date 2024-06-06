@@ -6,6 +6,7 @@ import copy
 import time
 import random
 import math
+import ctypes
 
 
 ICONS = {'*':{'color':'\033[' + str(random.randint(91, 99)) + 'm'}, 
@@ -121,6 +122,7 @@ if __name__ == "__main__":
 			global running
 			running = False
 
+	ctypes.windll.user32.keybd_event(0x7A)
 	print('\033[?25l', end="")
 
 	kbt = keyboard.keyboard(inputHandler)
@@ -140,6 +142,7 @@ if __name__ == "__main__":
 		time.sleep(0.05)
 
 	print('\033[?25h', end="")
+	ctypes.windll.user32.keybd_event(0x7A)
 
 	os.system('cls')
 	

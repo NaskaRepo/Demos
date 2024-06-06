@@ -6,6 +6,7 @@ import copy
 import time
 import random
 import math
+import ctypes
 
 
 TYPES = {'X':{'name':'dirt' , 'color':'\033[37m', 'state':'solid' , 'func':None},
@@ -160,6 +161,7 @@ if __name__ == "__main__":
 		if char == 'right' and spawn[0] < maxX - 1:
 			spawn = (spawn[0] + 1, spawn[1])
 	
+	ctypes.windll.user32.keybd_event(0x7A)
 	print('\033[?25l', end="")
 
 	kbt = keyboard.keyboard(inputHandler)
@@ -179,6 +181,7 @@ if __name__ == "__main__":
 		time.sleep(0.05)
 
 	print('\033[?25h', end="")
+	ctypes.windll.user32.keybd_event(0x7A)
 
 	os.system('cls')
 
