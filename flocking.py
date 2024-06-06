@@ -108,7 +108,7 @@ class Boid:
 
 if __name__ == "__main__":
 	ctypes.windll.user32.keybd_event(0x7A)
-	time.sleep(0.01)
+	time.sleep(0.1)
 	size = os.get_terminal_size()
 	maxX=size[0] - 3
 	maxY=size[1] - 3
